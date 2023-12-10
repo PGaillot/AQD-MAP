@@ -1,11 +1,12 @@
-import Project from "./project.model.js";
-
-
+import Project from './models/project.model.js';
+import API_KEY from './config.js';
+import GeocodingApi from './geocoding.api.js'
 
 // le point initial sur Henriville,
 // avec  sa Latitude :49.884195 et sa longitude :  2.299391
 const henrivilleLocation = [49.884195, 2.299391]
 
+const geoCodingApi = new GeocodingApi;
 
 // cration de la map (vide) 
 // set view prend deux parametres : lat long et zoom.
@@ -24,7 +25,10 @@ const home1 = new Project(49.88244987606139, 2.295839761994673,'324 Rue mon cul,
 
 
 // la liste des projets
-const projectsMarkers = [camHome, home1]
+const projectsMarkers = [camHome, home1];
+
+
+geoCodingApi.getCoordinateFromAddress(camHome.address).then(res => console.log(res)).catch(e => console.error(e))
 
 
 // chaque marker de "Markers" (le tableau) est representé par "m"
