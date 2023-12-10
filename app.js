@@ -29,5 +29,7 @@ const projectsMarkers = [camHome, home1]
 
 // chaque marker de "Markers" (le tableau) est representé par "m"
 projectsMarkers.forEach(pm => {
-    var marker = L.marker(pm.coordinate).addTo(map).bindPopup(pm.address);
+    if(pm.display){
+        var marker = L.marker(pm.coordinate).addTo(map).bindPopup(pm.address);
+    }
 })

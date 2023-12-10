@@ -1,5 +1,18 @@
+body {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#content {
+  height: 30rem;
+  width: 100%;
+  background: red;
+}
 #map {
   height: 30rem;
+  width: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */
