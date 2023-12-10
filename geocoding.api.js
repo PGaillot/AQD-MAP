@@ -4,9 +4,6 @@ const API_KEY = config.API_KEY;
 const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
 export default class GeocodingApi {
-
-
-
     /**
      * Indiquez les adresses au format utilisé par le service postal du pays concerné.
      * Les éléments d'adresse supplémentaires, tels que les noms d'entreprise et les numéros d'unité,

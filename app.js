@@ -1,39 +1,36 @@
 import Project from './models/project.model.js';
-import API_KEY from './config.js';
 import GeocodingApi from './geocoding.api.js'
+import ProjectApi from './projects.api.js';
 
 // le point initial sur Henriville,
 // avec  sa Latitude :49.884195 et sa longitude :  2.299391
-const henrivilleLocation = [49.884195, 2.299391]
+const henrivilleLocation = [49.884195, 2.299391];
+const projectApi = new ProjectApi;
 
 const geoCodingApi = new GeocodingApi;
 
-// cration de la map (vide) 
-// set view prend deux parametres : lat long et zoom.
-var map = L.map('map').setView(henrivilleLocation, 16);
+var map;
 
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+function initLeafletMap() {
+    // cration de la map (vide) 
+    // set view prend deux parametres : lat long et zoom.
+    map = L.map('map').setView(henrivilleLocation, 16);
 
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 
-// les projets de tata Camille ! 
-const camHome = new Project(49.8817568673084, 2.2977756999391756,'5 Rue Camille Saint-Saëns, 80000 Amiens', true);
-const home1 = new Project(49.88244987606139, 2.295839761994673,'324 Rue mon cul, 80000 Amiens', true);
+}
 
+// -------------START 🚀🧑‍🚀
+initLeafletMap();
+projectApi.getProjects()
+    .then(projects => {
+        projects.forEach(project => {
+            L.marker([project.lat, project.long]).addTo(map);
+        });
 
-// la liste des projets
-const projectsMarkers = [camHome, home1];
-
-
-geoCodingApi.getCoordinateFromAddress(camHome.address).then(res => console.log(res)).catch(e => console.error(e))
-
-
-// chaque marker de "Markers" (le tableau) est representé par "m"
-projectsMarkers.forEach(pm => {
-    if(pm.display){
-        var marker = L.marker(pm.coordinate).addTo(map).bindPopup(pm.address);
-    }
-})
+    })
+    .catch((e) => console.error(e));
