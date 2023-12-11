@@ -1,6 +1,6 @@
 import Project from './models/project.model.js';
-import GeocodingApi from './geocoding.api.js'
-import ProjectApi from './projects.api.js';
+import GeocodingApi from './api/geocoding.api.js'
+import ProjectApi from './api/projects.api.js';
 
 // le point initial sur Henriville,
 // avec  sa Latitude :49.884195 et sa longitude :  2.299391

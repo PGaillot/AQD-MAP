@@ -1,4 +1,4 @@
-import config from './config.js'
+import config from '../config.js'
 
 const API_KEY = config.API_KEY;
 const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
