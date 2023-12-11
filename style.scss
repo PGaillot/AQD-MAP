@@ -15,6 +15,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button{
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      border-radius: 0.25rem;
+      border: none;
+      &:hover{
+        background: rgb(230, 230, 230);
+      }
+}
+
+input{
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  // border: none;
+}
+
 #content {
   height: 30rem;
   width: 100%;
@@ -28,7 +44,15 @@ body {
 
 #projectForm {
   @extend %flex-column;
+  gap: 1rem;
   .input-wrapper {
     @extend %flex-column;
+    gap: 0.5rem;
+  }
+
+  .coordinate-wrapper{
+    @extend %flex-row;
+    align-items: center;
+    gap: 1rem;
   }
 }

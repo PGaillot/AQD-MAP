@@ -10,23 +10,35 @@
   <body>
     <h1>ADMIN</h1>
 
-      <form id="projectForm">
-        <div class="input-wrapper">
-          <label for="title">title</label>
-          <input type="text" name="title" id="title" />
-        </div>
+    <form id="projectForm">
+      <div class="input-wrapper">
+        <label for="title">title</label>
+        <input type="text" name="title" id="title" />
+      </div>
 
-        <div class="input-wrapper">
-          <label for="address">address</label>
-          <input type="text" name="address" id="address" />
-        </div>
+      <div class="input-wrapper">
+        <label for="address">address</label>
+        <input type="text" name="address" id="address" />
+      </div>
 
-        <div class="input-wrapper">
-          <label for="description">description</label>
-          <input type="text" name="description" id="description" />
-        </div>
+      <div>
+        <label for="customCoordinate">customCoordinate</label>
+        <input type="checkbox" name="customCoordinate" id="customCoordinate" />
+      </div>
 
-        <button type="submit">envoyer</button>
-      </form>
+      <div class="coordinate-wrapper">
+        <label for="lat">lat</label>
+        <input type="number" name="lat" id="lat" />
+        <label for="long">long</label>
+        <input type="number" name="long" id="long" />
+      </div>
+
+      <div class="input-wrapper">
+        <label for="description">description</label>
+        <input type="text" name="description" id="description" />
+      </div>
+
+      <button type="submit">envoyer</button>
+    </form>
   </body>
 </html>
