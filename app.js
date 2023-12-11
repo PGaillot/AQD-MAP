@@ -29,9 +29,7 @@ initLeafletMap();
 projectApi.getProjects()
     .then(projects => {
         projects.forEach(project => {
-            console.log(project);
-            if(project.lat && project.long) L.marker([project.lat, project.long]).addTo(map);
+            if(project.lat && project.long) L.marker([project.lat, project.long]).bindPopup(project.address).addTo(map);
         });
-
     })
     .catch((e) => console.error(e));

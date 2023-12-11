@@ -15,12 +15,13 @@ const customCoordinateInput = document.getElementById('customCoordinate');
 
 customCoordinateInput.addEventListener('change', function (event) {
     if (this.checked) {
-        console.log('checked !');
-
+        latInput.disabled = false;
+        longInput.disabled = false;
+        
     } else {
-        console.log('unchecked !');
+        latInput.disabled = true;
+        longInput.disabled = true;
     }
-    console.log(customCoordinateInput.checked);
 })
 
 
