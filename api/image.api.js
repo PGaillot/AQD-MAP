@@ -14,7 +14,7 @@ export default class ImageApi {
         // Upload the file and metadata
         const uploadTask = uploadBytes(fileRef, file, { contentType: file.type });
 
-        // Get the download URL after the upload is complete
+        // Return DATA after the upload is complete
         return new Promise((resolve, reject) => {
             uploadTask.then((data) =>
                     resolve(data)
