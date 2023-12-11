@@ -1,14 +1,7 @@
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js';
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-
-import config from '../config.js';
-
-const firebaseConfig = config.firebaseConfig;
-const app = initializeApp(firebaseConfig);
+import { getStorage, ref, uploadBytes } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js';
 
 const storage = getStorage();
 
-console.log(app);
 export default class ImageApi {
 
     uploadImage(file) {
