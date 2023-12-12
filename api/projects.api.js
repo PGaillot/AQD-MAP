@@ -32,14 +32,19 @@ export default class ProjectApi {
     }
 
 
-
+    /**
+     * 
+     * @param {*} project 
+     * @returns 
+     */
     createNewProject(project) {
         return setDoc(doc(collection(db, projectsCollectionName)), {
             title: project.title,
             address: project.address,
             lat: project.lat,
             long: project.long,
-            description: project.description
+            description: project.description,
+            imgId: project.imgId
         });
     }
 

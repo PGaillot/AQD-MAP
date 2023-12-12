@@ -8,9 +8,9 @@ export default class Project {
             this.coordinate = [this.lat, this.long],
             this.address = address,
             this.display = display,
-        this.imageUrl = imageUrl
-        this.title = title;
-        this.description = description
+            this.imgId = imgId,
+            this.title = title,
+            this.description = description
         // description,
         // reseaux
     }

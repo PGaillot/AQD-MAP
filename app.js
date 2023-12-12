@@ -5,8 +5,8 @@ import ProjectApi from './api/projects.api.js';
 // le point initial sur Henriville,
 // avec  sa Latitude :49.884195 et sa longitude :  2.299391
 const henrivilleLocation = [49.884195, 2.299391];
-const projectApi = new ProjectApi;
 
+const projectApi = new ProjectApi;
 const geoCodingApi = new GeocodingApi;
 
 var map;
@@ -29,7 +29,7 @@ initLeafletMap();
 projectApi.getProjects()
     .then(projects => {
         projects.forEach(project => {
-            if(project.lat && project.long) L.marker([project.lat, project.long]).bindPopup(project.address).addTo(map);
+            if (project.lat && project.long) L.marker([project.lat, project.long]).bindPopup(project.address).addTo(map);
         });
     })
     .catch((e) => console.error(e));

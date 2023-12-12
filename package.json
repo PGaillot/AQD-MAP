@@ -1,5 +1,33 @@
 {
+  "type": "module",
+  "engines": {
+    "node": ">=21.2.0"
+  },
   "dependencies": {
-    "firebase": "^10.7.1"
-  }
+    "firebase": "^10.7.1",
+    "uuid": "^9.0.1"
+  },
+  "scripts": {
+    "scss": "sass -w style.scss style.css"
+  },
+  "name": "aqd-amp",
+  "description": "- [tuto leaflet](https://leafletjs.com/examples.html)\r  - [doc leaflet](https://leafletjs.com/reference.html)",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PGaillot/AQD-AMP.git"
+  },
+  "keywords": [
+    "leaflet",
+    "geocoding",
+    "javascript"
+  ],
+  "author": "PGaillot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PGaillot/AQD-AMP/issues"
+  },
+  "homepage": "https://github.com/PGaillot/AQD-AMP#readme"
 }

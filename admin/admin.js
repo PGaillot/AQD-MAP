@@ -60,14 +60,12 @@ form.addEventListener('submit', function (event) {
         return
     } else {
         imgApi.uploadImage(imgFiles[0])
-            .then(data => {
-                const imgUrl = 'test'
-                console.log(data);
+            .then(url => {
+                const imgUrl = url
                 if (!customCoordinate) {
                     geocodingApi.getCoordinateFromAddress(address)
                         .then(res => {
                             const project = new Project(title, res.lat, res.lng, address, imgUrl, true, description);
-                            console.log(project);
                             projectApi.createNewProject(project);
                         })
                         .catch(error => console.error(error));
