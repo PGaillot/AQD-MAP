@@ -43,7 +43,6 @@ form.addEventListener('submit', function (event) {
     const long = longInput.value;
     const customCoordinate = customCoordinateInput.checked;
     const imgFiles = imgInput.files;
-    imgApi.uploadImage(imgFiles[0]);
 
     if (title < 5) {
         console.log("titre trop petit !");
@@ -60,8 +59,8 @@ form.addEventListener('submit', function (event) {
         return
     } else {
         imgApi.uploadImage(imgFiles[0])
-            .then(url => {
-                const imgUrl = url
+            .then(data => {
+                const imgUrl = data.metadata.name;
                 if (!customCoordinate) {
                     geocodingApi.getCoordinateFromAddress(address)
                         .then(res => {

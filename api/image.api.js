@@ -1,8 +1,7 @@
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-// import { v4 as uuidv4 } from 'uuid';
 
-const storage = getStorage();
+
 
 export default class ImageApi {
 
@@ -13,23 +12,24 @@ export default class ImageApi {
      * @returns 
      */
     uploadImage(file) {
-        const uuid = uuidv4();
-        console.log(uuid);
-        // Create a reference to the root of the storage bucket
+        const storage = getStorage();
         const storageRef = ref(storage);
 
+        // Generate an unique Id for the image reference.
+        const uid = new Date().getTime().toString();
+
+        // Create a reference to the root of the storage bucket
+
         // Create a reference to the file
-        const fileRef = ref(storageRef, file.name);
+        const fileRef = ref(storageRef, uid);
 
         // Upload the file and metadata
         const uploadTask = uploadBytes(fileRef, file, { contentType: file.type });
 
         // Get the download URL after the upload is complete
         return new Promise((resolve, reject) => {
-            uploadTask.then(() => getDownloadURL(fileRef))
-                .then(url => {
-                    resolve(url)
-                })
+            uploadTask
+                .then(data => resolve(data))
                 .catch(error => {
                     console.error('Error uploading image:', error);
                     alert('Error uploading image. Please try again.');
@@ -41,8 +41,39 @@ export default class ImageApi {
     /**
      * 
      */
-    getProjectImageUrl(){
+    getProjectImageUrl(imgId) {
+        const storage = getStorage();
+        const storageRef = ref(storage);
 
+        const imgRef = ref(storage, imgId + '.jpg');
+
+        return new Promise((resolve, reject) => {
+            getDownloadURL(imgRef)
+            .then(url => {
+                resolve(url)
+            })
+            .catch(e => {
+                switch(e.code){
+                    case 'storage/object-not-found' : 
+                    console.error("File doesn't exist, ", e)
+                    break;
+                    
+                    case 'storage/unauthorized' : 
+                    console.error("User doesn't have permission to access the object, ", e)
+                    break;
+                    
+                    case 'storage/canceled' : 
+                    console.error("User canceled the upload,", e)
+                    break;
+                    
+                    case 'storage/unknown' : 
+                    console.error("Unknown error occurred, inspect the server response,", e)
+                    break;
+                }
+
+                reject(e)
+            })
+        }) 
     }
 
 }
