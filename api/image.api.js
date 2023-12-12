@@ -43,30 +43,34 @@ export default class ImageApi {
      */
     getProjectImageUrl(imgId) {
         const storage = getStorage();
-        const imgRef = ref(storage, imgId + '.jpg');
+        const imgRef = ref(storage, imgId);
 
-        getDownloadURL(imgRef)
-            .then(url => {
-                return url;
-            })
-            .catch(e => {
-                switch (e.code) {
-                    case 'storage/object-not-found':
-                        console.error("File doesn't exist, ", e)
-                        break;
+        return new Promise((resolve, rejects) => {
+            getDownloadURL(imgRef)
+                .then(url => {
+                    resolve(url)
+                })
+                .catch(e => {
+                    switch (e.code) {
+                        case 'storage/object-not-found':
+                            console.error("File doesn't exist, ", e)
+                            break;
 
-                    case 'storage/unauthorized':
-                        console.error("User doesn't have permission to access the object, ", e)
-                        break;
+                        case 'storage/unauthorized':
+                            console.error("User doesn't have permission to access the object, ", e)
+                            break;
 
-                    case 'storage/canceled':
-                        console.error("User canceled the upload,", e)
-                        break;
+                        case 'storage/canceled':
+                            console.error("User canceled the upload,", e)
+                            break;
 
-                    case 'storage/unknown':
-                        console.error("Unknown error occurred, inspect the server response,", e)
-                        break;
-                }
-            })
+                        case 'storage/unknown':
+                            console.error("Unknown error occurred, inspect the server response,", e)
+                            break;
+                    }
+                    rejects(e)
+                })
+        })
+
     }
 }

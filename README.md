@@ -11,8 +11,6 @@ Le projet est construit en HTML, SCSS, et JavaScript. Il utilise également plus
 
 ## Gestion des Cartes
 Le projet intègre la bibliothèque Leaflet pour la gestion des cartes. Si vous avez besoin de comprendre ou d'ajuster le fonctionnement des cartes, consultez les ressources suivantes :
- - [Tutoriel Leaflet](https://leafletjs.com/examples.html)
- - [Documentation Leaflet](https://leafletjs.com/reference.html)
 
 ## Figma 🎨
 
