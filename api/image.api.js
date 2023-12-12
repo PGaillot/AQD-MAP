@@ -43,37 +43,30 @@ export default class ImageApi {
      */
     getProjectImageUrl(imgId) {
         const storage = getStorage();
-        const storageRef = ref(storage);
-
         const imgRef = ref(storage, imgId + '.jpg');
 
-        return new Promise((resolve, reject) => {
-            getDownloadURL(imgRef)
+        getDownloadURL(imgRef)
             .then(url => {
-                resolve(url)
+                return url;
             })
             .catch(e => {
-                switch(e.code){
-                    case 'storage/object-not-found' : 
-                    console.error("File doesn't exist, ", e)
-                    break;
-                    
-                    case 'storage/unauthorized' : 
-                    console.error("User doesn't have permission to access the object, ", e)
-                    break;
-                    
-                    case 'storage/canceled' : 
-                    console.error("User canceled the upload,", e)
-                    break;
-                    
-                    case 'storage/unknown' : 
-                    console.error("Unknown error occurred, inspect the server response,", e)
-                    break;
+                switch (e.code) {
+                    case 'storage/object-not-found':
+                        console.error("File doesn't exist, ", e)
+                        break;
+
+                    case 'storage/unauthorized':
+                        console.error("User doesn't have permission to access the object, ", e)
+                        break;
+
+                    case 'storage/canceled':
+                        console.error("User canceled the upload,", e)
+                        break;
+
+                    case 'storage/unknown':
+                        console.error("Unknown error occurred, inspect the server response,", e)
+                        break;
                 }
-
-                reject(e)
             })
-        }) 
     }
-
 }
