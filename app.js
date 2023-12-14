@@ -1,5 +1,5 @@
 import Project from "./project.model.js";
-
+import ProjectApi from "./api/projects.api.js";
 
 
 // le point initial sur Henriville,
@@ -30,10 +30,9 @@ const home1 = new Project(
   true
 );
 
-// la liste des projets
-const projectsMarkers = [camHome, home1];
-
-// chaque marker de "Markers" (le tableau) est representé par "m"
-projectsMarkers.forEach((pm) => {
-  var marker = L.marker(pm.coordinate).addTo(map).bindPopup(pm.address);
-});
+const projetApi = new ProjectApi ;
+projetApi.getProjects().subscribe(projects=>{
+  projects.forEach(projet=>{
+    L.marker(projet.coordinate).bindPopup(projet.address).addTo(map)
+  })
+}) 

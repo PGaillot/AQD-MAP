@@ -39,11 +39,15 @@ z-index: -1;
         font-weight: 700;
         font-family: 'Inter', sans-serif;
     }
+  }
+  .img-text{
+    flex-direction: row;
     img{
       width: 402px;
       height: 457px;
-      box-shadow: 0 0 0 10px #f1f1f1;
-    }
+      border: 2rem solid white;
+      margin : 1rem
+    } 
 }
 
 
