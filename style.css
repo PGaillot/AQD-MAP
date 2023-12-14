@@ -1,11 +1,35 @@
-#map {
-  height: 30rem;
-  margin: 1rem;
-  padding: 2rem;
+/* sass -w style.scss style.css */
+
+
+/* ! 5 - Supprimer le padding et le margin, PARTOUT */
+*{
+  padding: 0;
+  margin: 0;
 }
 
 body {
   background: #ffbe98;
+}
+
+#map {
+  /* ! 1 - passer la carte en position absolute */
+  position: absolute; 
+
+  /* ! 2 => sur le fichier index.html*/
+
+  /* ! 3 - supprimer ces merdes */
+  /* height: 30rem; */
+  /* margin: 1rem; */
+  /* padding: 2rem; */
+
+
+  /*  ! 4 - ajouter ce code */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: -1;
 }
 
 .logo-container {
