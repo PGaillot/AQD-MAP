@@ -1,3 +1,7 @@
+$primary: #ffbe98 ;
+$secondary : #fea347 ;
+
+
 *{
   padding :0;
   margin: 0;
@@ -5,7 +9,6 @@
 
 #map {
 position: absolute; 
-
 top: 0;
 bottom: 0;
 left: 0;
@@ -14,55 +17,24 @@ right: 0;
 z-index: -1;
 }
 
-$mainColor : #ffbe98 ;
-$secondColor : #fea347 ;
 
-
-body{
-  background: $mainColor;
-  height: 100vh;
-}
-.logo-container{
-  width: 150px;
-  height: 150px;
-  display: block;
-  margin: auto;
-
-}
-.logo-aqd {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  
-}
 .global-container{
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  width: 850px;
 }
-.text-description{
-  width: 40%;
-  height: auto;
-  padding: 2rem;
-  margin: 1rem;
-  box-shadow: 0 0 10px grey;
-  background: $secondColor;
-  justify-self: flex-start;
 
-    img{
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-    p{
-      font-family: Arial, Helvetica, sans-serif;
-      padding: 1rem;
+  
 
-    }
-  }
-  .social-media{
+
+
+
+
+.social-media{
     margin: 2rem;
     border-radius: 9999px;
-    box-shadow: 0 0 10px $secondColor;
+    box-shadow: 0 0 10px $secondary;
      
       .fa {
         padding: 20px;
