@@ -1,29 +1,16 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
 #map {
-  /* ! 1 - passer la carte en position absolute */
-  position: absolute; 
-
-  /* ! 2 => sur le fichier index.html*/
-
-  /* ! 3 - supprimer ces merdes */
-  /* height: 30rem; */
-  /* margin: 1rem; */
-  /* padding: 2rem; */
-
-
-  /*  ! 4 - ajouter ce code */
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-
   z-index: -1;
 }
-
 
 body {
   background: #ffbe98;
@@ -46,7 +33,7 @@ body {
 .global-container {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .text-description {
