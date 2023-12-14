@@ -1,14 +1,6 @@
-/* sass -w style.scss style.css */
-
-
-/* ! 5 - Supprimer le padding et le margin, PARTOUT */
 *{
   padding: 0;
   margin: 0;
-}
-
-body {
-  background: #ffbe98;
 }
 
 #map {
@@ -32,6 +24,12 @@ body {
   z-index: -1;
 }
 
+
+body {
+  background: #ffbe98;
+  height: 100vh;
+}
+
 .logo-container {
   width: 150px;
   height: 150px;
@@ -48,7 +46,7 @@ body {
 .global-container {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .text-description {

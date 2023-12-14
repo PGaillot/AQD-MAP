@@ -1,5 +1,5 @@
 #map {
-    height: 30rem;
+    height: 100%;
     margin: 1rem;
     padding: 2rem;
   }
@@ -10,6 +10,7 @@ $secondColor : #fea347 ;
 
 body{
   background: $mainColor;
+  height: 100vh;
 }
 .logo-container{
   width: 150px;
