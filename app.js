@@ -1,7 +1,7 @@
 import Project from "./project.model.js";
 import ProjectApi from "./api/projects.api.js";
 
-
+const projectApi = new ProjectApi
 // le point initial sur Henriville,
 // avec  sa Latitude :49.884195 et sa longitude :  2.299391
 const henrivilleLocation = [49.884195, 2.299391];
@@ -30,9 +30,11 @@ const home1 = new Project(
   true
 );
 
-const projetApi = new ProjectApi ;
-projetApi.getProjects().subscribe(projects=>{
-  projects.forEach(projet=>{
-    L.marker(projet.coordinate).bindPopup(projet.address).addTo(map)
-  })
-}) 
+projectApi.getProjects()
+    .then(projects => {
+        projects.forEach(project => {
+            if (project.lat && project.long) L.marker([project.lat, project.long]).bindPopup(project.address).addTo(map);
+            // if (project.lat && project.long) L.marker([project.lat, project.long]).bindPopup(project.address).addTo(map).on('click', showProject.bind(null, project));
+        });
+    })
+    .catch((e) => console.error(e));

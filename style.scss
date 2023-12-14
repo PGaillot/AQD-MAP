@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300&display=swap');
 
+// sass --watch style.scss:style.css
 $primary: #F8F2E8 ;
 $secondary : #fea347 ;
 $titleColor : #B06141 ;
 
-
+@mixin imgSize ($width){
+  height: calc($width*15)/10 + px;
+  width: $width + px;
+}
 
 
 *{
@@ -27,7 +31,7 @@ z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 850px;
+  max-width: 66.6%;
   height: 100%;
   background: $primary;
   flex-direction: column;
@@ -38,17 +42,18 @@ z-index: -1;
         color: $titleColor;
         font-weight: 700;
         font-family: 'Inter', sans-serif;
+        text-wrap: wrap;
     }
   }
   .img-text{
     flex-direction: row;
     img{
-      width: 402px;
-      height: 457px;
-      border: 2rem solid white;
+      @include imgSize(200);
+      border: 1rem solid white;
       margin : 1rem
     } 
 }
+
 
 
   

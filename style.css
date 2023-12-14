@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 850px;
+  max-width: 66.6%;
   height: 100%;
   background: #F8F2E8;
   flex-direction: column;
@@ -29,15 +29,16 @@
   color: #B06141;
   font-weight: 700;
   font-family: "Inter", sans-serif;
+  text-wrap: wrap;
 }
 
 .img-text {
   flex-direction: row;
 }
 .img-text img {
-  width: 402px;
-  height: 457px;
-  border: 2rem solid white;
+  height: 300px;
+  width: 200px;
+  border: 1rem solid white;
   margin: 1rem;
 }
 
