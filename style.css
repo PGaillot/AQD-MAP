@@ -18,28 +18,40 @@
   justify-content: center;
   align-items: center;
   max-width: 66.6%;
-  height: 100%;
-  background: #F8F2E8;
+  height: 100vh;
+  background: #f8f2e8;
   flex-direction: column;
   box-shadow: 0 0 16px 8px rgba(0, 0, 0, 0.25);
 }
 .pop-up h2 {
   padding: 1rem;
   font-size: 32px;
-  color: #B06141;
+  color: #b06141;
   font-weight: 700;
   font-family: "Inter", sans-serif;
   text-wrap: wrap;
 }
 
 .img-text {
+  display: flex;
   flex-direction: row;
 }
 .img-text img {
   height: 300px;
   width: 200px;
   border: 1rem solid white;
-  margin: 1rem;
+  margin: 2rem;
+}
+.img-text h3 {
+  font-family: "Dancing Script", cursive;
+  color: #2C1C16;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: normal;
+  padding: 2rem;
+}
+.img-text p {
+  font-family: "Inter", sans-serif;
 }
 
 /*# sourceMappingURL=style.css.map */
