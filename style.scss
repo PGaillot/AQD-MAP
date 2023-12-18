@@ -5,7 +5,6 @@ $primary: #f8f2e8;
 $secondary: #fea347;
 $titleColor: #b06141;
 
-
 @mixin imgSize($width) {
   height: calc($width * 15) / 10 + px;
   width: $width + px;
@@ -47,24 +46,51 @@ $titleColor: #b06141;
 .img-text {
   display: flex;
   flex-direction: row;
-  img {
-    @include imgSize(200);
-    border: 1rem solid white;
-    margin: 2rem;
+
+  text-container {
+    padding: 4rem;
+    text-align: center;
+    width: 30%;
   }
   h3 {
     font-family: "Dancing Script", cursive;
-    color: #2C1C16;
+    color: #2c1c16;
     font-size: 32px;
     font-weight: 700;
-    line-height: normal;
-    padding: 2rem;
+    padding-bottom: 1.5rem;
   }
-  p{
-    font-family:"Inter", sans-serif; 
-    
+  p {
+    font-family: "Inter", sans-serif;
   }
 }
+.img-container {
+  position: relative;
+  img{
+    @include imgSize(240);
+    border: 1rem solid white;
+    margin: 4rem;
+    position: absolute;
+    left: 0.2%;
+  }
+  .front-img {
+    
+    
+    
+  }
+  .back-img {
+    
+    transition: transform 2s ease-in-out;
+    
+    // transition: all 1sec ease-in-out;
+  }
+}
+.img-container :nth-child(2):hover{
+  transform: rotate(-25deg);
+  transform: scale(50%);
+  
+}
+
+  
 
 // .social-media{
 //     margin: 2rem;

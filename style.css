@@ -36,22 +36,40 @@
   display: flex;
   flex-direction: row;
 }
-.img-text img {
-  height: 300px;
-  width: 200px;
-  border: 1rem solid white;
-  margin: 2rem;
+.img-text text-container {
+  padding: 4rem;
+  text-align: center;
+  width: 30%;
 }
 .img-text h3 {
   font-family: "Dancing Script", cursive;
-  color: #2C1C16;
+  color: #2c1c16;
   font-size: 32px;
   font-weight: 700;
-  line-height: normal;
-  padding: 2rem;
+  padding-bottom: 1.5rem;
 }
 .img-text p {
   font-family: "Inter", sans-serif;
+}
+
+.img-container {
+  position: relative;
+}
+.img-container img {
+  height: 360px;
+  width: 240px;
+  border: 1rem solid white;
+  margin: 4rem;
+  position: absolute;
+  left: 0.2%;
+}
+.img-container .back-img {
+  transition: transform 2s ease-in-out;
+}
+
+.img-container :nth-child(2):hover {
+  transform: rotate(-25deg);
+  transform: scale(50%);
 }
 
 /*# sourceMappingURL=style.css.map */
