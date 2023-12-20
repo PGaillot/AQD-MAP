@@ -6,11 +6,14 @@ const projectApi = new ProjectApi
 // avec  sa Latitude :49.884195 et sa longitude :  2.299391
 const henrivilleLocation = [49.884195, 2.299391];
 
-const closeButton = document.getElementsByClassName('close-button')[0]; 
 //TODO close the pop up // 
-closeButton.addEventListener('click', (e) =>{
-  console.log(e);
-})
+  const closeButton = document.querySelector('.close-button');
+  const popUp = document.getElementById('show-popUp');
+
+  closeButton.addEventListener('click',() => {
+      popUp.classList.toggle('hide');
+  });
+
 
 
 // cration de la map (vide)

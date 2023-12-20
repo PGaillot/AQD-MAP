@@ -25,7 +25,11 @@ $titleColor: #b06141;
   z-index: -1;
 }
 
-.pop-up {
+.hide{
+  visibility: hidden;
+}
+
+#show-popUp {
   display: flex;
   flex-direction: column;
   max-width: 66.6%;
@@ -41,6 +45,9 @@ $titleColor: #b06141;
     .nav {
       display: flex;
       gap: 0.25rem;
+    }
+    .close-button{
+      cursor: pointer;
     }
   }
 
@@ -67,8 +74,8 @@ $titleColor: #b06141;
         position: absolute;
         object-fit: cover;
         border: 1rem solid white;
-        filter: drop-shadow(0 0 8px  );
-        
+        filter: drop-shadow(0 0 8px);
+
         &:nth-child(1) {
           transform: rotate(0deg);
           transition: transform 0.3s ease-in-out;
@@ -88,8 +95,7 @@ $titleColor: #b06141;
           }
           &:nth-child(2) {
             transform: rotate(3deg);
-            filter: drop-shadow(0 0 8px  );
-            
+            filter: drop-shadow(0 0 8px);
           }
         }
       }
