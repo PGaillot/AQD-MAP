@@ -1,6 +1,8 @@
 import Project from "./project.model.js";
 import ProjectApi from "./api/projects.api.js";
+import ImageApi from "./api/image.api.js";
 
+const imageApi = new ImageApi();
 const projectApi = new ProjectApi();
 // le point initial sur Henriville,
 // avec  sa Latitude :49.884195 et sa longitude :  2.299391
@@ -12,7 +14,7 @@ const popUp = document.getElementById("show-popUp");
 
 closeButton.addEventListener("click", () => {
   // popUp.classList.toggle("hide");
-  gsap.to(popUp, {duration: 1, ease : "power1.out", x : -1000});
+  gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
 });
 
 // cration de la map (vide)
@@ -25,23 +27,42 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
-/// ---A CORRIGER---------- 
-let marker = L.marker([49.884195, 2.299391]).addTo(map);
-
-marker.addEventListener("click", () => {
+function loadPopUp(project) {
+  document.getElementById("address").textContent = project.address;
+  document.getElementById("description").textContent = project.description;
+  document.getElementById("title").textContent = project.title;
   
-  gsap.to(popUp, {duration: 1, ease : "power1.out", x : 0});
-});
+  
+  //? "APPEL D'API, de l'image " // 
+  imageApi.getProjectImageUrl(project.imgId)
+  .then(data =>{
+    document.getElementById("img").src = data;
+  })
+  .catch(error => console.error(error))
+  .finally(()=>console.log("It's over"));
+
+  
+}
+
+function onMarkerClick(project) {
+  gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: 0 });
+  console.log(project);
+  loadPopUp(project);
+}
 
 projectApi
   .getProjects()
   .then((projects) => {
     projects.forEach((project) => {
+      // if (project.lat && project.long)
+      //   L.marker([project.lat, project.long])
+      //     .bindPopup(project.address)
+      //     .addTo(map);
       if (project.lat && project.long)
         L.marker([project.lat, project.long])
           .bindPopup(project.address)
-          .addTo(map);
-      // if (project.lat && project.long) L.marker([project.lat, project.long]).bindPopup(project.address).addTo(map).on('click', showProject.bind(null, project));
+          .addTo(map)
+          .on("click", onMarkerClick.bind(null, project));
     });
   })
   .catch((e) => console.error(e));

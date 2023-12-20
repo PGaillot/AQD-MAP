@@ -44,7 +44,8 @@ export default class ProjectApi {
             lat: project.lat,
             long: project.long,
             description: project.description,
-            imgId: project.imgId
+            imgId: project.imgId,
+            title: project.title
         });
     }
 

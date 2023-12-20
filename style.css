@@ -12,10 +12,6 @@
   right: 0;
 }
 
-.hide {
-  visibility: hidden;
-}
-
 #show-popUp {
   display: flex;
   flex-direction: column;
