@@ -10,7 +10,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: -1;
 }
 
 .hide {
@@ -26,6 +25,8 @@
   box-shadow: 0 0 16px 8px rgba(0, 0, 0, 0.25);
   padding: 1rem;
   gap: 1rem;
+  z-index: 999999;
+  position: absolute;
 }
 #show-popUp .header {
   display: flex;

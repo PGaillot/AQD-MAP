@@ -11,7 +11,8 @@ const closeButton = document.querySelector(".close-button");
 const popUp = document.getElementById("show-popUp");
 
 closeButton.addEventListener("click", () => {
-  popUp.classList.toggle("hide");
+  // popUp.classList.toggle("hide");
+  gsap.to(popUp, {duration: 1, ease : "power1.out", x : -1000});
 });
 
 // cration de la map (vide)
@@ -23,14 +24,15 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
+
 /// ---A CORRIGER---------- 
 let marker = L.marker([49.884195, 2.299391]).addTo(map);
 
 marker.addEventListener("click", () => {
-  popUp.classList.toggle("show-popUp");
-  console.log('marker clicked');
+  
+  gsap.to(popUp, {duration: 1, ease : "power1.out", x : 0});
 });
-//// ---------/// 
+
 projectApi
   .getProjects()
   .then((projects) => {
