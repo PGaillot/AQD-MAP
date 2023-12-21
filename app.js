@@ -2,6 +2,7 @@ import Project from "./project.model.js";
 import ProjectApi from "./api/projects.api.js";
 import ImageApi from "./api/image.api.js";
 
+
 const imageApi = new ImageApi();
 const projectApi = new ProjectApi();
 
@@ -9,6 +10,9 @@ const henrivilleLocation = [49.884195, 2.299391];
 
 const closeButton = document.querySelector(".close-button");
 const popUp = document.getElementById("show-popUp");
+const arrow = document.getElementById("arrow");
+
+popUp.style.left = -1000 +'px';
 
 closeButton.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
@@ -26,8 +30,17 @@ function loadPopUp(project) {
   document.getElementById("address").textContent = project.address;
   document.getElementById("description").textContent = project.description;
   document.getElementById("title").textContent = project.title;
+  document.getElementById("city").textContent = project.city;
+  document.getElementById("district").textContent = project.district;
 
-  //? "APPEL D'API, de l'image " //
+  if(project.district === ''|| project.district === undefined){
+    arrow.style.display = "none";
+    console.log(project.district);
+  }else{
+    arrow.style.display = "block";
+  }
+
+  //? "APPEL D'API, de l'image "//
   imageApi
     .getProjectImageUrl(project.imgId)
     .then((data) => {
@@ -38,8 +51,7 @@ function loadPopUp(project) {
 }
 
 function onMarkerClick(project) {
-  gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: 0 });
-  console.log(project);
+  gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: 1000 });
   loadPopUp(project);
 }
 
