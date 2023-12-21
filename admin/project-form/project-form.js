@@ -16,6 +16,7 @@ const descriptionInput = document.getElementById('description');
 const latInput = document.getElementById('lat');
 const longInput = document.getElementById('long');
 const customCoordinateInput = document.getElementById('customCoordinate');
+const cityInput = document.getElementById('city');
 
 
 customCoordinateInput.addEventListener('change', function (event) {
@@ -36,6 +37,7 @@ form.addEventListener('submit', function (event) {
 
     const title = titleInput.value;
     const address = addressInput.value;
+    const city = cityInput.value;
     const description = descriptionInput.value;
     const lat = latInput.value;
     const long = longInput.value;
@@ -58,11 +60,13 @@ form.addEventListener('submit', function (event) {
     } else {
         imgApi.uploadImage(imgFiles[0])
             .then(data => {
+                console.log('okayyyy');
                 const imgUrl = data.metadata.name;
                 if (!customCoordinate) {
                     geocodingApi.getCoordinateFromAddress(address)
-                        .then(res => {
-                            const project = new Project(title, res.lat, res.lng, address, imgUrl, true, description);
+                    .then(res => {
+                            console.log('okayyyy 2 ')
+                            const project = new Project(title, res.lat, res.lng, address, city, imgUrl, true, description);
                             projectApi.createNewProject(project);
                         })
                         .catch(error => console.error(error));
