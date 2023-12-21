@@ -4,16 +4,13 @@ import ImageApi from "./api/image.api.js";
 
 const imageApi = new ImageApi();
 const projectApi = new ProjectApi();
-// le point initial sur Henriville,
-// avec  sa Latitude :49.884195 et sa longitude :  2.299391
+
 const henrivilleLocation = [49.884195, 2.299391];
 
-//TODO close the pop up //
 const closeButton = document.querySelector(".close-button");
 const popUp = document.getElementById("show-popUp");
 
 closeButton.addEventListener("click", () => {
-  // popUp.classList.toggle("hide");
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
 });
 
@@ -31,17 +28,15 @@ function loadPopUp(project) {
   document.getElementById("address").textContent = project.address;
   document.getElementById("description").textContent = project.description;
   document.getElementById("title").textContent = project.title;
-  
-  
-  //? "APPEL D'API, de l'image " // 
-  imageApi.getProjectImageUrl(project.imgId)
-  .then(data =>{
-    document.getElementById("img").src = data;
-  })
-  .catch(error => console.error(error))
-  .finally(()=>console.log("It's over"));
 
-  
+  //? "APPEL D'API, de l'image " //
+  imageApi
+    .getProjectImageUrl(project.imgId)
+    .then((data) => {
+      document.getElementById("img").src = data;
+    })
+    .catch((error) => console.error(error))
+    .finally(() => console.log("It's over"));
 }
 
 function onMarkerClick(project) {
@@ -50,16 +45,23 @@ function onMarkerClick(project) {
   loadPopUp(project);
 }
 
+let greenIcon = L.icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/128/7191/7191059.png',
+  shadowUrl: "leaf-shadow.png",
+
+  iconSize: [38, 40], // size of the icon
+  shadowSize: [50, 85], // size of the shadow
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62], // the same for the shadow
+  popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+});
+
 projectApi
   .getProjects()
   .then((projects) => {
     projects.forEach((project) => {
-      // if (project.lat && project.long)
-      //   L.marker([project.lat, project.long])
-      //     .bindPopup(project.address)
-      //     .addTo(map);
       if (project.lat && project.long)
-        L.marker([project.lat, project.long])
+        L.marker([project.lat, project.long], { icon: greenIcon })
           .bindPopup(project.address)
           .addTo(map)
           .on("click", onMarkerClick.bind(null, project));
