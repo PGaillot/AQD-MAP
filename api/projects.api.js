@@ -41,6 +41,9 @@ export default class ProjectApi {
         return setDoc(doc(collection(db, projectsCollectionName)), {
             title: project.title,
             address: project.address,
+            city: project.city,
+            district: project.district,
+            zipCode: project.zipCode,
             lat: project.lat,
             long: project.long,
             description: project.description,
