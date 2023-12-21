@@ -14,8 +14,6 @@ closeButton.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
 });
 
-// cration de la map (vide)
-// set view prend deux parametres : lat long et zoom.
 var map = L.map("map").setView(henrivilleLocation, 16);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -47,8 +45,6 @@ function onMarkerClick(project) {
 
 let greenIcon = L.icon({
   iconUrl: 'https://cdn-icons-png.flaticon.com/128/7191/7191059.png',
-  shadowUrl: "leaf-shadow.png",
-
   iconSize: [38, 40], // size of the icon
   shadowSize: [50, 85], // size of the shadow
   iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
