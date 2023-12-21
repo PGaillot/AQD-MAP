@@ -11,6 +11,9 @@ const imgApi = new ImageApi;
 const form = document.getElementById('projectForm');
 const titleInput = document.getElementById('title');
 const addressInput = document.getElementById('address');
+const cityInput = document.getElementById('city');
+const districtInput = document.getElementById('district');
+const zipCodeInput = document.getElementById('zipCode');
 const imgInput = document.getElementById('img');
 const descriptionInput = document.getElementById('description');
 const latInput = document.getElementById('lat');
@@ -36,6 +39,9 @@ form.addEventListener('submit', function (event) {
 
     const title = titleInput.value;
     const address = addressInput.value;
+    const city = cityInput.value;
+    const district = districtInput.value;
+    const zipCode = zipCodeInput.value;
     const description = descriptionInput.value;
     const lat = latInput.value;
     const long = longInput.value;
@@ -62,7 +68,7 @@ form.addEventListener('submit', function (event) {
                 if (!customCoordinate) {
                     geocodingApi.getCoordinateFromAddress(address)
                         .then(res => {
-                            const project = new Project(title, res.lat, res.lng, address, imgUrl, true, description);
+                            const project = new Project(title, res.lat, res.lng, address, city, district, zipCode, imgUrl, true, description);
                             projectApi.createNewProject(project);
                         })
                         .catch(error => console.error(error));
