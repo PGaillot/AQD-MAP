@@ -66,7 +66,7 @@ form.addEventListener('submit', function (event) {
             .then(data => {
                 const imgUrl = data.metadata.name;
                 if (!customCoordinate) {
-                    geocodingApi.getCoordinateFromAddress(address)
+                    geocodingApi.getCoordinateFromAddress(address, zipCode, city)
                         .then(res => {
                             const project = new Project(title, res.lat, res.lng, address, city, district, zipCode, imgUrl, true, description);
                             projectApi.createNewProject(project);
