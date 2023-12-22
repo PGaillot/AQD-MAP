@@ -21,12 +21,41 @@ $titleColor: #b06141;
   bottom: 0;
   left: 0;
   right: 0;
-  ;
+}
+#ask-house {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 5000;
+  background: $secondary;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 99999px;
+  border: none;
+  font-size: 18px;
+  filter: drop-shadow(0 0 12px rgb(87, 79, 79));
+  cursor: pointer;
 }
 
+//!------------------MODAL-------------------------//
+#modal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: $primary;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+.show-modal{
+  position: absolute;
+  z-index: 9000;
+}
+//!------------------MODAL-------------------------//
 
 #show-popUp {
-  
   display: flex;
   flex-direction: column;
   max-width: 66.6%;
@@ -37,6 +66,7 @@ $titleColor: #b06141;
   gap: 1rem;
   z-index: 999999;
   position: absolute;
+  overflow: hidden;
 
   .header {
     display: flex;
@@ -45,7 +75,7 @@ $titleColor: #b06141;
       display: flex;
       gap: 0.25rem;
     }
-    .close-button{
+    .close-button {
       cursor: pointer;
     }
   }

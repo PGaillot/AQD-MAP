@@ -2,7 +2,6 @@ import Project from "./project.model.js";
 import ProjectApi from "./api/projects.api.js";
 import ImageApi from "./api/image.api.js";
 
-
 const imageApi = new ImageApi();
 const projectApi = new ProjectApi();
 
@@ -11,12 +10,15 @@ const henrivilleLocation = [49.884195, 2.299391];
 const closeButton = document.querySelector(".close-button");
 const popUp = document.getElementById("show-popUp");
 const arrow = document.getElementById("arrow");
-const mapLayer = document.getElementById("map");
-popUp.style.left = -1000 +'px';
+popUp.style.left = -1000 + "px";
 
-mapLayer.addEventListener("click", () =>{
+function closeMapLayer (){
+const mapLayer = document.getElementById("map");
+mapLayer.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
-})
+});
+}
+
 closeButton.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
 });
@@ -36,9 +38,9 @@ function loadPopUp(project) {
   document.getElementById("city").textContent = project.city;
   document.getElementById("district").textContent = project.district;
 
-  if(project.district === ''|| project.district === undefined){
+  if (project.district === "" || project.district === undefined) {
     arrow.style.display = "none";
-  }else{
+  } else {
     arrow.style.display = "block";
   }
 
@@ -58,7 +60,7 @@ function onMarkerClick(project) {
 }
 
 let greenIcon = L.icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/128/7191/7191059.png',
+  iconUrl: "https://cdn-icons-png.flaticon.com/128/7191/7191059.png",
   iconSize: [38, 40], // size of the icon
   shadowSize: [50, 85], // size of the shadow
   iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
@@ -78,3 +80,27 @@ projectApi
     });
   })
   .catch((e) => console.error(e));
+
+
+
+  const askHouse = document.getElementById("ask-house");
+  const modal = document.getElementById("modal")
+  const modalCloseButton = document.getElementById('close-button');
+
+      function toggleModal() {
+        modal.classList.toggle("show-modal");
+      }
+
+      function windowOnClick(event) {
+        if (event.target === modal) {
+          toggleModal();
+        }
+      }
+
+      askHouse.addEventListener("click", toggleModal);
+      modalCloseButton.addEventListener("click", toggleModal);
+      window.addEventListener("click", windowOnClick);
+
+
+
+

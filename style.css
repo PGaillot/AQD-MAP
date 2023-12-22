@@ -12,6 +12,38 @@
   right: 0;
 }
 
+#ask-house {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 5000;
+  background: #fea347;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 99999px;
+  border: none;
+  font-size: 18px;
+  filter: drop-shadow(0 0 12px rgb(87, 79, 79));
+  cursor: pointer;
+}
+
+#modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f8f2e8;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.show-modal {
+  position: absolute;
+  z-index: 9000;
+}
+
 #show-popUp {
   display: flex;
   flex-direction: column;
@@ -23,6 +55,7 @@
   gap: 1rem;
   z-index: 999999;
   position: absolute;
+  overflow: hidden;
 }
 #show-popUp .header {
   display: flex;
