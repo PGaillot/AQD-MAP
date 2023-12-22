@@ -11,9 +11,12 @@ const henrivilleLocation = [49.884195, 2.299391];
 const closeButton = document.querySelector(".close-button");
 const popUp = document.getElementById("show-popUp");
 const arrow = document.getElementById("arrow");
-
+const mapLayer = document.getElementById("map");
 popUp.style.left = -1000 +'px';
 
+mapLayer.addEventListener("click", () =>{
+  gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
+})
 closeButton.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
 });
@@ -35,7 +38,6 @@ function loadPopUp(project) {
 
   if(project.district === ''|| project.district === undefined){
     arrow.style.display = "none";
-    console.log(project.district);
   }else{
     arrow.style.display = "block";
   }

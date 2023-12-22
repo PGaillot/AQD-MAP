@@ -49,12 +49,12 @@
 }
 #show-popUp .content .img-container {
   height: 375px;
-  min-width: 250px;
+  max-width: 250px;
   position: relative;
 }
 #show-popUp .content .img-container img {
   height: 300px;
-  min-width: 200px;
+  max-width: 200px;
   position: absolute;
   object-fit: cover;
   border: 1rem solid white;
