@@ -7,6 +7,7 @@ const projectApi = new ProjectApi();
 
 const henrivilleLocation = [49.884195, 2.299391];
 
+const modal = document.getElementById("modal");
 const closeButton = document.querySelector(".close-button");
 const popUp = document.getElementById("show-popUp");
 const arrow = document.getElementById("arrow");
@@ -16,7 +17,10 @@ const mapLayer = document.getElementById("map");
 
 mapLayer.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
-})
+  if(modal.classList[0] === "show-modal"){
+    toggleModal(); 
+  }
+});
 closeButton.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
 });
@@ -79,20 +83,16 @@ projectApi
   })
   .catch((e) => console.error(e));
 
-  // fill ask house 
-// close pop up on ask-house click 
+// fill ask house
+// close pop up on ask-house click
 
-  const askHouse = document.getElementById("ask-house");
-  const modal = document.getElementById("modal")
-  const modalCloseButton = document.getElementById('close-button');
+const askHouse = document.getElementById("ask-house");
+const modalCloseButton = document.getElementById("close-button");
 
-      function toggleModal() {
-        modal.classList.toggle("show-modal");
-      }
+function toggleModal() {
+  modal.classList.toggle("show-modal");
+  modal.classList.toggle("hidden-modal");
+}
 
-      askHouse.addEventListener("click", toggleModal);
-      modalCloseButton.addEventListener("click", toggleModal);
-
-
-
-
+askHouse.addEventListener("click", toggleModal);
+modalCloseButton.addEventListener("click", toggleModal);
