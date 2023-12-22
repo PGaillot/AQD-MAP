@@ -12,13 +12,11 @@ const popUp = document.getElementById("show-popUp");
 const arrow = document.getElementById("arrow");
 popUp.style.left = -1000 + "px";
 
-function closeMapLayer (){
 const mapLayer = document.getElementById("map");
+
 mapLayer.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
-});
-}
-
+})
 closeButton.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
 });
@@ -81,7 +79,8 @@ projectApi
   })
   .catch((e) => console.error(e));
 
-
+  // fill ask house 
+// close pop up on ask-house click 
 
   const askHouse = document.getElementById("ask-house");
   const modal = document.getElementById("modal")
@@ -91,15 +90,8 @@ projectApi
         modal.classList.toggle("show-modal");
       }
 
-      function windowOnClick(event) {
-        if (event.target === modal) {
-          toggleModal();
-        }
-      }
-
       askHouse.addEventListener("click", toggleModal);
       modalCloseButton.addEventListener("click", toggleModal);
-      window.addEventListener("click", windowOnClick);
 
 
 
