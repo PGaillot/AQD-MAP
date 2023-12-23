@@ -36,15 +36,27 @@
     <div id="modal" class="hidden-modal">
       <div id="modal-content">
         <span id="close-button">X</span>
-        <form id="projectForm">
+        <form id="request-form">
           <div class="input-wrapper">
-            <label for="mail">Email</label>
-            <input type="email" name="mail" id="mail"  placeholder="jacquesdu80@tunning.fr" />
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email"  placeholder="jacquesdu80@tunning.fr" />
           </div>
         
           <div class="input-wrapper">
             <label for="address">address</label>
-            <input type="text" name="address" id="address" placeholder="80 rue des unpeupliers 84175 MONPIED" />
+            <input type="text" name="address" id="address" placeholder="80 rue des unpeupliers " />
+          </div>
+          <div class="input-wrapper">
+            <label for="city">city</label>
+            <input type="text" name="city" id="city" placeholder="TROUVILLE" />
+          </div>
+          <div class="input-wrapper">
+            <label for="district">district</label>
+            <input type="text" name="district" id="district" placeholder="Quartier AttentionTonCul" />
+          </div>
+          <div class="input-wrapper">
+            <label for="zip-code">zip-code</label>
+            <input type="text" name="zip-code" id="zip-code" placeholder="77890 représente oue gros" />
           </div>
         
           <div class="input-wrapper">
@@ -53,8 +65,8 @@
           </div>
         
           <div class="input-wrapper-col">
-            <label for="message">message</label>
-            <textarea type="text" name="message" id="message" placeholder="Bla bla bla, ce n'est surement pas très interessant de toute facon" rows="7" cols="30" ></textarea>
+            <label for="msg">message</label>
+            <textarea type="text" name="msg" id="msg" placeholder="Bla bla bla, ce n'est surement pas très interessant de toute facon" rows="7" cols="30" ></textarea>
           </div>
         
           <button type="submit">envoyer</button>

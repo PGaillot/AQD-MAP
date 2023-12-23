@@ -18,7 +18,8 @@ export default class HouseRequestApi {
             district: houseRequest.district,
             zipCode: houseRequest.zipCode,
             imgList: houseRequest.imgList,
-            msg: houseRequest.msg
+            msg: houseRequest.msg,
+            status: 'pending'
         });
     }
 }

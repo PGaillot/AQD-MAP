@@ -39,10 +39,10 @@ $titleColor: #b06141;
 }
 
 //!------------------MODAL-------------------------//
+
 #modal {
   position: absolute;
-  justify-content: center;
-  align-items: center;
+  display: none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -51,9 +51,9 @@ $titleColor: #b06141;
   font-family: "Inter", sans-serif;
   cursor: pointer;
   border-radius: 1rem;
-
   filter: drop-shadow(0 0 12px black);
-  form {
+
+  #request-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,7 +97,7 @@ $titleColor: #b06141;
 .hidden-modal {
   display: none;
 }
-.show-modal {
+#modal.show-modal {
   position: absolute;
   z-index: 9000;
   display: flex;

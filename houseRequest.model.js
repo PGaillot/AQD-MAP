@@ -1,5 +1,6 @@
 export default class HouseRequest{
-    constructor(email, address, lat = null, long = null, city, district='', zipCode, imgList, msg =''  ){
+    constructor( email, address, lat = null, long = null, city, district='', zipCode, imgList, msg =''){
+        
         this.email = email,
         this.address = address,
         this.lat = lat,
@@ -9,6 +10,7 @@ export default class HouseRequest{
         this.zipCode = zipCode
         this.imgList = imgList,
         this.msg = msg,
-        this.coordinate = [lat, long]
+        this.coordinate = [lat, long],
+        this.status = 'pending'
     }
 }

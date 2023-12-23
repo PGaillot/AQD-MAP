@@ -2,7 +2,7 @@ import Project from "./project.model.js";
 import ProjectApi from "./api/projects.api.js";
 import ImageApi from "./api/image.api.js";
 import HouseRequestApi from "./api/houseRequest.api.js";
-import HouseRequestApi from "./api/houseRequest.api.js";
+import HouseRequest from "./houseRequest.model.js";
 
 const houseRequestApi = new HouseRequestApi();
 const imageApi = new ImageApi();
@@ -10,6 +10,7 @@ const projectApi = new ProjectApi();
 
 const henrivilleLocation = [49.884195, 2.299391];
 
+const requestForm = document.getElementById("request-form");
 const modal = document.getElementById("modal");
 const closeButton = document.querySelector(".close-button");
 const popUp = document.getElementById("show-popUp");
@@ -20,8 +21,8 @@ const mapLayer = document.getElementById("map");
 
 mapLayer.addEventListener("click", () => {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
-  if(modal.classList[0] === "show-modal"){
-    toggleModal(); 
+  if (modal.classList[0] === "show-modal") {
+    toggleModal();
   }
 });
 closeButton.addEventListener("click", () => {
@@ -62,7 +63,8 @@ function loadPopUp(project) {
 function onMarkerClick(project) {
   gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: 1000 });
   loadPopUp(project);
-}
+  }
+
 
 let greenIcon = L.icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/128/7191/7191059.png",
@@ -86,9 +88,6 @@ projectApi
   })
   .catch((e) => console.error(e));
 
-// fill ask house
-// close pop up on ask-house click
-
 const askHouse = document.getElementById("ask-house");
 const modalCloseButton = document.getElementById("close-button");
 
@@ -99,3 +98,35 @@ function toggleModal() {
 
 askHouse.addEventListener("click", toggleModal);
 modalCloseButton.addEventListener("click", toggleModal);
+
+requestForm.addEventListener("submit", function (event) {
+  event.preventDefault(); // Empêche la soumission par défaut du formulaire
+  const emailInput = document.getElementById("email");
+  const addressInput = document.getElementById("address");
+  const msgInput = document.getElementById("msg");
+  const cityInput = document.getElementById("city");
+  const districtInput = document.getElementById("district");
+  const zipCodeInput = document.getElementById("zip-code");
+
+  const email = emailInput.value;
+  const address = addressInput.value;
+  const city = cityInput.value;
+  const district = districtInput.value;
+  const zipCode = zipCodeInput.value;
+  const msg = msgInput.value;
+  //   const imgFiles = imgInput.files;
+
+  const houseRequest = new HouseRequest(
+    email,
+    address,
+    null,
+    null,
+    city,
+    district,
+    zipCode,
+    [],
+    msg
+  );
+
+  houseRequestApi.createHouseRequest(houseRequest);
+});
