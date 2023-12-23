@@ -100,9 +100,27 @@ projectApi
 
 //? --------------------💬💬 MODAL 💬💬--------------------//
 
+
+
 function toggleModal() {
-  modal.classList.toggle("show-modal");
-  modal.classList.toggle("hidden-modal");
+  if (modal.classList[0] === "show-modal") {
+    setTimeout(() => {
+      modal.classList.toggle("show-modal");
+      modal.classList.toggle("hidden-modal");
+      askHouse.style.display = 'block'
+    }, 300);
+    modal.classList.toggle("modal-opacity-on");
+    modal.classList.toggle("modal-opacity-off");
+} else {
+    modal.classList.toggle("show-modal");
+    modal.classList.toggle("hidden-modal");
+    setTimeout(() => {
+        modal.classList.toggle("modal-opacity-on");
+        modal.classList.toggle("modal-opacity-off");
+        askHouse.style.display = 'none'
+    }, 10);
+  }
+  askHouse.style.display = 'none'
 }
 
 askHouse.addEventListener("click", () => {
@@ -110,8 +128,8 @@ askHouse.addEventListener("click", () => {
     togglePopUp();
     setTimeout(() => {
       toggleModal();
-    }, 400);
-  }else{
+    }, 200);
+  } else {
     toggleModal();
   }
 });

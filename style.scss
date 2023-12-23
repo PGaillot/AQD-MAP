@@ -22,6 +22,9 @@ $titleColor: #b06141;
   left: 0;
   right: 0;
 }
+
+//!------------------MODAL-------------------------//
+
 #ask-house {
   position: absolute;
   bottom: 0;
@@ -36,9 +39,8 @@ $titleColor: #b06141;
   font-size: 18px;
   filter: drop-shadow(0 0 12px rgb(87, 79, 79));
   cursor: pointer;
+  transition: opacity 300ms ease-in-out;
 }
-
-//!------------------MODAL-------------------------//
 
 #modal {
   position: absolute;
@@ -53,7 +55,8 @@ $titleColor: #b06141;
   border-radius: 1rem;
   filter: drop-shadow(0 0 12px black);
   z-index: 9000;
-  transition: opacity 500ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+  
   
 
   #request-form {
@@ -99,14 +102,19 @@ $titleColor: #b06141;
 }
 .hidden-modal {
   display: none;
-  opacity: 0;
   
 }
 #modal.show-modal {
   position: absolute;
   
   display: flex;
-  opacity: 1;
+
+}
+.modal-opacity-on{
+opacity: 1;
+}
+.modal-opacity-off{
+opacity: 0;
 }
 
 //!------------------MODAL-------------------------//
