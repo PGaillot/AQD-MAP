@@ -1,7 +1,10 @@
 import Project from "./project.model.js";
 import ProjectApi from "./api/projects.api.js";
 import ImageApi from "./api/image.api.js";
+import HouseRequestApi from "./api/houseRequest.api.js";
+import HouseRequestApi from "./api/houseRequest.api.js";
 
+const houseRequestApi = new HouseRequestApi();
 const imageApi = new ImageApi();
 const projectApi = new ProjectApi();
 
