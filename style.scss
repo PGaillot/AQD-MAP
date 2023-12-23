@@ -105,7 +105,7 @@ $titleColor: #b06141;
 
 //!------------------MODAL-------------------------//
 
-#show-popUp {
+#popUp {
   display: flex;
   flex-direction: column;
   max-width: 66.6%;
@@ -115,8 +115,8 @@ $titleColor: #b06141;
   padding: 1rem;
   gap: 1rem;
   z-index: 999999;
-  position: absolute;
   overflow: hidden;
+  transition: left 500ms cubic-bezier(1,-0.13,.63,.83);
 
   .header {
     display: flex;
@@ -191,6 +191,17 @@ $titleColor: #b06141;
       }
     }
   }
+}
+.hidden-popup{
+  position: absolute;
+  left: -1000px;
+  top: 0;
+}
+
+.show-popup{
+  position: absolute;
+  left: 0;
+  top:0;
 }
 // .img-text {
 //   display: flex;

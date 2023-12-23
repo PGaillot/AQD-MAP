@@ -89,7 +89,7 @@
   display: flex;
 }
 
-#show-popUp {
+#popUp {
   display: flex;
   flex-direction: column;
   max-width: 66.6%;
@@ -99,21 +99,21 @@
   padding: 1rem;
   gap: 1rem;
   z-index: 999999;
-  position: absolute;
   overflow: hidden;
+  transition: left 500ms cubic-bezier(1, -0.13, 0.63, 0.83);
 }
-#show-popUp .header {
+#popUp .header {
   display: flex;
   justify-content: space-between;
 }
-#show-popUp .header .nav {
+#popUp .header .nav {
   display: flex;
   gap: 0.25rem;
 }
-#show-popUp .header .close-button {
+#popUp .header .close-button {
   cursor: pointer;
 }
-#show-popUp .address {
+#popUp .address {
   color: #b06141;
   font-family: "Inter", sans-serif;
   font-size: 32px;
@@ -121,16 +121,16 @@
   font-weight: 700;
   line-height: normal;
 }
-#show-popUp .content {
+#popUp .content {
   display: flex;
   gap: 1rem;
 }
-#show-popUp .content .img-container {
+#popUp .content .img-container {
   height: 375px;
   max-width: 250px;
   position: relative;
 }
-#show-popUp .content .img-container img {
+#popUp .content .img-container img {
   height: 300px;
   max-width: 200px;
   position: absolute;
@@ -138,34 +138,46 @@
   border: 1rem solid white;
   filter: drop-shadow(0 0 8px);
 }
-#show-popUp .content .img-container img:nth-child(1) {
+#popUp .content .img-container img:nth-child(1) {
   transform: rotate(0deg);
   transition: transform 0.3s ease-in-out;
 }
-#show-popUp .content .img-container img:nth-child(2) {
+#popUp .content .img-container img:nth-child(2) {
   transform: rotate(0deg);
   transition-property: transform, filter;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
   filter: none;
 }
-#show-popUp .content .img-container:hover img:nth-child(1) {
+#popUp .content .img-container:hover img:nth-child(1) {
   transform: rotate(-12deg);
 }
-#show-popUp .content .img-container:hover img:nth-child(2) {
+#popUp .content .img-container:hover img:nth-child(2) {
   transform: rotate(3deg);
   filter: drop-shadow(0 0 8px);
 }
-#show-popUp .content .text-container {
+#popUp .content .text-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin: 2rem;
 }
-#show-popUp .content .text-container .divider {
+#popUp .content .text-container .divider {
   height: 0.25rem;
   width: 15%;
   background: #000;
+}
+
+.hidden-popup {
+  position: absolute;
+  left: -1000px;
+  top: 0;
+}
+
+.show-popup {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

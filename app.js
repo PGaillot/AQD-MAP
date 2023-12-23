@@ -4,40 +4,61 @@ import ImageApi from "./api/image.api.js";
 import HouseRequestApi from "./api/houseRequest.api.js";
 import HouseRequest from "./houseRequest.model.js";
 
+const mapLayer = document.getElementById("map");
 const houseRequestApi = new HouseRequestApi();
 const imageApi = new ImageApi();
 const projectApi = new ProjectApi();
 
+// MAP 🗺️
 const henrivilleLocation = [49.884195, 2.299391];
-
 const requestForm = document.getElementById("request-form");
 const modal = document.getElementById("modal");
-const closeButton = document.querySelector(".close-button");
-const popUp = document.getElementById("show-popUp");
-const arrow = document.getElementById("arrow");
-popUp.style.left = -1000 + "px";
 
-const mapLayer = document.getElementById("map");
+// POP-UP 💥
+const closeButton = document.querySelector(".close-button");
+const arrow = document.getElementById("arrow");
+const popUp = document.getElementById("popUp");
+
+//?----------------- 🗺️🗺️ MAP 🗺️🗺️ -----------//
 
 mapLayer.addEventListener("click", () => {
-  gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
   if (modal.classList[0] === "show-modal") {
-    toggleModal();
-  }
-});
-closeButton.addEventListener("click", () => {
-  gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: -1000 });
+      toggleModal();
+    }
 });
 
 var map = L.map("map").setView(henrivilleLocation, 16);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
+    maxZoom: 19,
+    attribution:
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
+let greenIcon = L.icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/128/7191/7191059.png",
+    iconSize: [38, 40], // size of the icon
+    shadowSize: [50, 85], // size of the shadow
+    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62], // the same for the shadow
+    popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+});
+
+//? -------- 💥💥💥 POP-UP 💥💥💥 ----------------// 
+
+
+
+
+function togglePopUp() {
+  popUp.classList.toggle("show-popup");
+  popUp.classList.toggle("hidden-popup");
+}
+
 function loadPopUp(project) {
+
+
+
+
   document.getElementById("address").textContent = project.address;
   document.getElementById("description").textContent = project.description;
   document.getElementById("title").textContent = project.title;
@@ -50,7 +71,7 @@ function loadPopUp(project) {
     arrow.style.display = "block";
   }
 
-  //? "APPEL D'API, de l'image "//
+  //! "APPEL D'API, de l'image "//
   imageApi
     .getProjectImageUrl(project.imgId)
     .then((data) => {
@@ -61,32 +82,28 @@ function loadPopUp(project) {
 }
 
 function onMarkerClick(project) {
-  gsap.to(popUp, { duration: 1, ease: "expoScale(0.5,7,none)", x: 1000 });
-  loadPopUp(project);
-  }
+    togglePopUp();
+    loadPopUp(project);
+}
 
-
-let greenIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/128/7191/7191059.png",
-  iconSize: [38, 40], // size of the icon
-  shadowSize: [50, 85], // size of the shadow
-  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-  shadowAnchor: [4, 62], // the same for the shadow
-  popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
-});
+closeButton.addEventListener("click", ()=>{
+    togglePopUp();
+})
 
 projectApi
-  .getProjects()
-  .then((projects) => {
+.getProjects()
+.then((projects) => {
     projects.forEach((project) => {
-      if (project.lat && project.long)
+        if (project.lat && project.long)
         L.marker([project.lat, project.long], { icon: greenIcon })
-          .bindPopup(project.address)
-          .addTo(map)
-          .on("click", onMarkerClick.bind(null, project));
-    });
-  })
-  .catch((e) => console.error(e));
+    .bindPopup(project.address)
+    .addTo(map)
+    .on("click", onMarkerClick.bind(null, project));
+});
+})
+.catch((e) => console.error(e));
+
+//? --------------------💬💬 MODAL 💬💬--------------------//
 
 const askHouse = document.getElementById("ask-house");
 const modalCloseButton = document.getElementById("close-button");
@@ -96,9 +113,13 @@ function toggleModal() {
   modal.classList.toggle("hidden-modal");
 }
 
-askHouse.addEventListener("click", toggleModal);
+askHouse.addEventListener("click", () => {
+  toggleModal();
+});
+
 modalCloseButton.addEventListener("click", toggleModal);
 
+//^ START on form submit // 
 requestForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Empêche la soumission par défaut du formulaire
   const emailInput = document.getElementById("email");
