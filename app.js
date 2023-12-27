@@ -2,11 +2,14 @@ import ProjectApi from "./api/projects.api.js";
 import ImageApi from "./api/image.api.js";
 import HouseRequestApi from "./api/houseRequest.api.js";
 import HouseRequest from "./houseRequest.model.js";
+import GeocodingApi from "./api/geocoding.api.js";
 
 const mapLayer = document.getElementById("map");
 const houseRequestApi = new HouseRequestApi();
 const imageApi = new ImageApi();
 const projectApi = new ProjectApi();
+const geocodingApi = new GeocodingApi();
+
 // MODAL 💬
 const askHouse = document.getElementById("ask-house");
 const modalCloseButton = document.getElementById("close-button");
@@ -101,27 +104,25 @@ projectApi
 
 //? --------------------💬💬 MODAL 💬💬--------------------//
 
-
-
 function toggleModal() {
   if (modal.classList[0] === "show-modal") {
     setTimeout(() => {
       modal.classList.toggle("show-modal");
       modal.classList.toggle("hidden-modal");
-      askHouse.style.display = 'block'
+      askHouse.style.display = "block";
     }, 300);
     modal.classList.toggle("modal-opacity-on");
     modal.classList.toggle("modal-opacity-off");
-} else {
+  } else {
     modal.classList.toggle("show-modal");
     modal.classList.toggle("hidden-modal");
     setTimeout(() => {
-        modal.classList.toggle("modal-opacity-on");
-        modal.classList.toggle("modal-opacity-off");
-        askHouse.style.display = 'none'
+      modal.classList.toggle("modal-opacity-on");
+      modal.classList.toggle("modal-opacity-off");
+      askHouse.style.display = "none";
     }, 10);
   }
-  askHouse.style.display = 'none'
+  askHouse.style.display = "none";
 }
 
 askHouse.addEventListener("click", () => {
@@ -155,18 +156,37 @@ requestForm.addEventListener("submit", function (event) {
   const zipCode = zipCodeInput.value;
   const msg = msgInput.value;
   //   const imgFiles = imgInput.files;
+  const completeAddress = address + " " + zipCode + " " + city;
+  const inputs = requestForm.querySelectorAll("input");
+  console.log(completeAddress);
+  geocodingApi
+    .getCoordinateFromAddress(completeAddress)
+    .then((data) => {
+      console.log(data);
+      const houseRequest = new HouseRequest(
+        email,
+        address,
+        data.lat,
+        data.lng,
+        city,
+        district,
+        zipCode,
+        [],
+        msg
+      );
 
-  const houseRequest = new HouseRequest(
-    email,
-    address,
-    null,
-    null,
-    city,
-    district,
-    zipCode,
-    [],
-    msg
-  );
+      houseRequestApi.createHouseRequest(houseRequest);
 
-  houseRequestApi.createHouseRequest(houseRequest);
+      toggleModal()
+      inputs.forEach(input =>
+        input.value = ''
+      )
+      
+    })
+    .catch((error) => {
+      console.error(error);
+      window.alert(
+        `${completeAddress} n'est pas reconnue commme une vraie adresse :(`
+      );
+    });
 });
