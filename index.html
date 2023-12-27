@@ -32,48 +32,76 @@
     <div id="map"></div>
     <!--! 2 - Remonter la carte dans le body -->
     <button id="ask-house" class="modal-opacity-on">Demander ma maison</button>
-    
     <div id="modal" class="hidden-modal modal-opacity-off">
       <div id="modal-content">
-        <span id="close-button">X</span>
         <form id="request-form">
+          <div id="close-button" class="modal-header">
+            <p>X</p>
+          </div>
           <div class="input-wrapper">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email"  placeholder="jacquesdu80@tunning.fr" />
+            <input
+              type="email"
+              name="email"
+              id="modal-email"
+              placeholder="jacquesdu80@tunning.fr"
+            />
           </div>
-        
           <div class="input-wrapper">
             <label for="address">address</label>
-            <input type="text" name="address" id="address" placeholder="80 rue des unpeupliers " />
+            <input
+              type="text"
+              name="address"
+              id="modal-address"
+              placeholder="80 rue des unpeupliers "
+            />
           </div>
           <div class="input-wrapper">
             <label for="city">city</label>
-            <input type="text" name="city" id="city" placeholder="TROUVILLE" />
+            <input type="text" name="city" id="modal-city" placeholder="TROUVILLE" />
           </div>
           <div class="input-wrapper">
             <label for="district">district</label>
-            <input type="text" name="district" id="district" placeholder="Quartier AttentionTonCul" />
+            <input
+              type="text"
+              name="district"
+              id="modal-district"
+              placeholder="Quartier AttentionTonCul"
+            />
           </div>
           <div class="input-wrapper">
             <label for="zip-code">zip-code</label>
-            <input type="text" name="zip-code" id="zip-code" placeholder="77890 représente oue gros" />
+            <input
+              type="text"
+              name="zip-code"
+              id="modal-zip-code"
+              placeholder="77890 représente oue gros"
+            />
           </div>
-        
+
           <div class="input-wrapper">
             <label for="file">file</label>
-            <input type="file" multiple name="img" id="img">
+            <input type="file" multiple name="img" id="modal-img" />
           </div>
-        
+
           <div class="input-wrapper-col">
             <label for="msg">message</label>
-            <textarea type="text" name="msg" id="msg" placeholder="Bla bla bla, ce n'est surement pas très interessant de toute facon" rows="7" cols="30" ></textarea>
+            <textarea
+              type="text"
+              name="msg"
+              id="modal-msg"
+              placeholder="Bla bla bla, ce n'est surement pas très interessant de toute facon"
+              rows="7"
+              cols="30"
+            ></textarea>
           </div>
-        
+
           <button type="submit">envoyer</button>
         </form>
       </div>
     </div>
-    <div id="popUp" class="hidden-popup" >
+
+    <div id="popUp" class="hidden-popup">
       <!-- ? HEADER  -->
       <div class="header">
         <div class="nav">
@@ -86,23 +114,23 @@
 
       <!--? ADDRESS  -->
       <div class="address">
-        <h2 id="address">30, rue Marguerite Hémart Férandier, 80000 AMIENS</h2>
+        <h2 id="address"></h2>
       </div>
 
       <!--? CONTENT -->
       <div class="content">
         <div class="img-container">
           <img
-          class="front-img"
-          src="https://firebasestorage.googleapis.com/v0/b/aqd-map-17674.appspot.com/o/1702419999915?alt=media&token=af2c17bd-1e9f-4e96-a8d7-5c438e96a713"
-          alt="image test"
+            class="front-img"
+            src="https://firebasestorage.googleapis.com/v0/b/aqd-map-17674.appspot.com/o/1702419999915?alt=media&token=af2c17bd-1e9f-4e96-a8d7-5c438e96a713"
+            alt="image test"
           />
           <img
-            id="img"    
+            id="img"
             class="back-img"
             src="https://firebasestorage.googleapis.com/v0/b/aqd-map-17674.appspot.com/o/1702419999915?alt=media&token=af2c17bd-1e9f-4e96-a8d7-5c438e96a713"
             alt="image test"
-            />
+          />
         </div>
         <div class="text-container">
           <h3 id="title" class="title">Mon super titre</h3>
@@ -118,7 +146,6 @@
         </div>
       </div>
 
-      
       <!-- <div class="social-media">
         <a href="#" class="fa fa-facebook-official"></a>
         <a href="#" class="fa fa-instagram"></a>

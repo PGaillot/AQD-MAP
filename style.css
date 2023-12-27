@@ -44,12 +44,22 @@
   z-index: 9000;
   transition: opacity 300ms ease-in-out;
 }
+#modal #close-button {
+  display: flex;
+  justify-content: end;
+}
 #modal #request-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+#modal #request-form span {
+  display: block;
+  position: absolute;
+  top: 1rem;
+  margin: 1rem;
 }
 #modal #request-form .input-wrapper {
   display: flex;
@@ -180,7 +190,7 @@
 
 .hidden-popup {
   position: absolute;
-  left: -1000px;
+  left: -1000%;
   top: 0;
 }
 

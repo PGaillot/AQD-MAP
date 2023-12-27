@@ -79,6 +79,7 @@ function loadPopUp(project) {
 function onMarkerClick(project) {
   togglePopUp();
   loadPopUp(project);
+  console.log(project);
 }
 
 closeButton.addEventListener("click", () => {
@@ -140,12 +141,12 @@ modalCloseButton.addEventListener("click", toggleModal);
 
 requestForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Empêche la soumission par défaut du formulaire
-  const emailInput = document.getElementById("email");
-  const addressInput = document.getElementById("address");
-  const msgInput = document.getElementById("msg");
-  const cityInput = document.getElementById("city");
-  const districtInput = document.getElementById("district");
-  const zipCodeInput = document.getElementById("zip-code");
+  const emailInput = document.getElementById("modal-email");
+  const addressInput = document.getElementById("modal-address");
+  const msgInput = document.getElementById("modal-msg");
+  const cityInput = document.getElementById("modal-city");
+  const districtInput = document.getElementById("modal-district");
+  const zipCodeInput = document.getElementById("modal-zip-code");
 
   const email = emailInput.value;
   const address = addressInput.value;
