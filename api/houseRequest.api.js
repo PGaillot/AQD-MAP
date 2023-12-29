@@ -7,10 +7,11 @@ const db = getFirestore(app);
 const houseRequestCollectionName = config.HOUSE_REQUEST_COLLECTION;
 
 export default class HouseRequestApi {
-    
+
     createHouseRequest(houseRequest) {
         return setDoc(doc(collection(db, houseRequestCollectionName)), {
-            email : houseRequest.email,
+            id: Date.now(),
+            email: houseRequest.email,
             address: houseRequest.address,
             lat: houseRequest.lat,
             long: houseRequest.long,
