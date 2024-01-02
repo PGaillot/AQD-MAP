@@ -12,7 +12,7 @@ const geocodingApi = new GeocodingApi();
 
 // MODAL 💬
 const askHouse = document.getElementById("ask-house");
-const modalCloseButton = document.getElementById("close-button");
+const modalCloseButton = document.getElementById("modal-close-button");
 
 // MAP 🗺️
 const henrivilleLocation = [49.884195, 2.299391];
@@ -159,10 +159,12 @@ requestForm.addEventListener("submit", function (event) {
   const completeAddress = address + " " + zipCode + " " + city;
   const inputs = requestForm.querySelectorAll("input");
   console.log(completeAddress);
+  
+  
   geocodingApi
     .getCoordinateFromAddress(completeAddress)
     .then((data) => {
-      console.log(data);
+      //? Ici on recupere la lat et lng depuis l'API de geocoding// 
       const houseRequest = new HouseRequest(
         email,
         address,
@@ -177,11 +179,10 @@ requestForm.addEventListener("submit", function (event) {
 
       houseRequestApi.createHouseRequest(houseRequest);
 
-      toggleModal()
-      inputs.forEach(input =>
-        input.value = ''
-      )
+      toggleModal();
       
+      //TODO: Add a snack bar // 
+      inputs.forEach((input) => (input.value = ""));
     })
     .catch((error) => {
       console.error(error);
