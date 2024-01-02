@@ -13,13 +13,14 @@ const geocodingApi = new GeocodingApi();
 // MODAL 💬
 const askHouse = document.getElementById("ask-house");
 const modalCloseButton = document.getElementById("modal-close-button");
+const snackBar = document.getElementById("modal-snackbar");
 
 // MAP 🗺️
 const henrivilleLocation = [49.884195, 2.299391];
 const requestForm = document.getElementById("request-form");
 const modal = document.getElementById("modal");
 
-// POP-UP 💥
+// POPUP 💥
 const closeButton = document.querySelector(".close-button");
 const arrow = document.getElementById("arrow");
 const popUp = document.getElementById("popUp");
@@ -125,6 +126,13 @@ function toggleModal() {
   askHouse.style.display = "none";
 }
 
+function toggleSnackbar() {
+  snackBar.classList.add("show");
+  setTimeout( ()=> {
+   snackBar.classList.remove("show");
+  }, 3000);
+}
+
 askHouse.addEventListener("click", () => {
   if (popUp.classList[0] === "show-popup") {
     togglePopUp();
@@ -159,12 +167,11 @@ requestForm.addEventListener("submit", function (event) {
   const completeAddress = address + " " + zipCode + " " + city;
   const inputs = requestForm.querySelectorAll("input");
   console.log(completeAddress);
-  
-  
+
   geocodingApi
     .getCoordinateFromAddress(completeAddress)
     .then((data) => {
-      //? Ici on recupere la lat et lng depuis l'API de geocoding// 
+      //? Ici on recupere la lat et lng depuis l'API de geocoding//
       const houseRequest = new HouseRequest(
         email,
         address,
@@ -180,8 +187,9 @@ requestForm.addEventListener("submit", function (event) {
       houseRequestApi.createHouseRequest(houseRequest);
 
       toggleModal();
-      
-      //TODO: Add a snack bar // 
+      toggleSnackbar();
+
+      //TODO: Add a snack bar //
       inputs.forEach((input) => (input.value = ""));
     })
     .catch((error) => {

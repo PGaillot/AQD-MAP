@@ -171,7 +171,7 @@ $titleColor: #b06141;
 
   .content {
     display: flex;
-    gap: 5rem;
+    gap: 2rem;
     flex-wrap: nowrap;
 
     .img-container {
@@ -186,28 +186,9 @@ $titleColor: #b06141;
         object-fit: cover;
         border: 1rem solid white;
         filter: drop-shadow(0 0 8px);
-
-        &:nth-child(1) {
-          transform: scale(1.5);
-          transition: transform 0.3s ease-in-out;
-        }
-        // &:nth-child(2) {
-        //   transform: rotate(0deg);
-        //   transition-property: transform, filter;
-        //   transition-duration: 300ms;
-        //   transition-timing-function: ease-in-out;
-        //   filter: none;
-        // }
-      }
-      &:hover {
-        img {
-          &:nth-child(1) {
-            transform: rotate(-12deg);
-          }
-          &:nth-child(2) {
-            transform: rotate(3deg);
-            filter: drop-shadow(0 0 8px);
-          }
+        transition: all 300ms ease-in-out;
+        &:hover {
+          transform: scale(1.1);
         }
       }
     }
@@ -236,63 +217,63 @@ $titleColor: #b06141;
   left: 0;
   top: 0;
 }
-// .img-text {
-//   display: flex;
-//   flex-direction: row;
 
-//   text-container {
-//     padding: 4rem;
-//     text-align: center;
-//     width: 30%;
-//   }
-//   h3 {
-//     font-family: "Dancing Script", cursive;
-//     color: #2c1c16;
-//     font-size: 32px;
-//     font-weight: 700;
-//     padding-bottom: 1.5rem;
-//   }
-//   p {
-//     font-family: "Inter", sans-serif;
-//   }
-// }
-// .img-container {
-//   position: relative;
-//   img {
-//     @include imgSize(240);
-//     border: 1rem solid white;
-//     margin: 4rem;
-//     position: absolute;
-//     left: 0.2%;
-//   }
-//   .front-img {
-//   }
-//   .back-img {
-//     transition: transform 2s ease-in-out;
+.social-media {
+  margin: 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 10px rgb(194, 190, 190);
+  display: flex;
 
-//     // transition: all 1sec ease-in-out;
-//   }
-// }
-// .img-container :nth-child(2):hover {
-//   transform: rotate(-25deg);
-//   transform: scale(50%);
-// }
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .fa:visited {
+    color: initial;
+  }
+}
+//? ------SNACKBAR -----//
+#modal-snackbar {
+  visibility: hidden; 
+  min-width: 250px; 
+  margin-left: -125px; 
+  background-color: #333; 
+  color: #fff; 
+  text-align: center; 
+  border-radius: 2px; 
+  padding: 16px; 
+  position: fixed; 
+  z-index: 400;
+  left: 50%; 
+  bottom: 30px; 
+}
 
-// .social-media{
-//     margin: 2rem;
-//     border-radius: 9999px;
-//     box-shadow: 0 0 10px $secondary;
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#modal-snackbar.show {
+  visibility: visible; 
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
 
-//       .fa {
-//         padding: 20px;
-//         font-size: 30px;
-//         width: 50px;
-//         text-align: center;
-//         text-decoration: none;
-//         cursor: pointer;
-//       }
-//       .fa:visited {
-//         color: initial;
-//       }
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
 
-//   }
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
