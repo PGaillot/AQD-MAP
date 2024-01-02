@@ -44,9 +44,17 @@
   z-index: 9000;
   transition: opacity 300ms ease-in-out;
 }
-#modal #close-button {
+#modal #modal-content {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+  width: 100%;
+}
+#modal #modal-content #modal-close-button {
+  display: flex;
+  position: absolute;
+  right: 1rem;
+  height: 1rem;
+  top: 1rem;
 }
 #modal #request-form {
   display: flex;
@@ -66,6 +74,9 @@
   width: 100%;
   gap: 1rem;
   align-items: center;
+}
+#modal #request-form .input-wrapper:nth-child(1) {
+  margin-top: 1.5rem;
 }
 #modal #request-form .input-wrapper input {
   width: 100%;
@@ -143,31 +154,25 @@
 }
 #popUp .content {
   display: flex;
-  gap: 1rem;
+  gap: 5rem;
+  flex-wrap: nowrap;
 }
 #popUp .content .img-container {
-  height: 375px;
-  max-width: 250px;
+  height: 390px;
+  max-width: 260px;
   position: relative;
+  left: 1.5rem;
 }
 #popUp .content .img-container img {
   height: 300px;
   max-width: 200px;
-  position: absolute;
   object-fit: cover;
   border: 1rem solid white;
   filter: drop-shadow(0 0 8px);
 }
 #popUp .content .img-container img:nth-child(1) {
-  transform: rotate(0deg);
+  transform: scale(1.5);
   transition: transform 0.3s ease-in-out;
-}
-#popUp .content .img-container img:nth-child(2) {
-  transform: rotate(0deg);
-  transition-property: transform, filter;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in-out;
-  filter: none;
 }
 #popUp .content .img-container:hover img:nth-child(1) {
   transform: rotate(-12deg);
