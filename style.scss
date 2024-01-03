@@ -3,6 +3,7 @@
 // sass --watch style.scss:style.css
 $primary: #f8f2e8;
 $secondary: #fea347;
+$secondaryOpa : #fea347d6;
 $titleColor: #b06141;
 
 @mixin imgSize($width) {
@@ -238,10 +239,10 @@ $titleColor: #b06141;
 }
 //? ------SNACKBAR -----//
 #modal-snackbar {
-  visibility: hidden; 
+  visibility: visible; 
   min-width: 250px; 
   margin-left: -125px; 
-  background-color: #333; 
+  background-color: $secondaryOpa; 
   color: #fff; 
   text-align: center; 
   border-radius: 2px; 
@@ -252,28 +253,28 @@ $titleColor: #b06141;
   bottom: 30px; 
 }
 
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-#modal-snackbar.show {
-  visibility: visible; 
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
 
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
+// #modal-snackbar.show {
+//   visibility: visible; 
+//   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+//   animation: fadein 0.5s, fadeout 0.5s 2.5s;
+// }
+// @-webkit-keyframes fadein {
+//   from {bottom: 0; opacity: 0;}
+//   to {bottom: 30px; opacity: 1;}
+// }
 
-@-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
+// @keyframes fadein {
+//   from {bottom: 0; opacity: 0;}
+//   to {bottom: 30px; opacity: 1;}
+// }
 
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
+// @-webkit-keyframes fadeout {
+//   from {bottom: 30px; opacity: 1;}
+//   to {bottom: 0; opacity: 0;}
+// }
+
+// @keyframes fadeout {
+//   from {bottom: 30px; opacity: 1;}
+//   to {bottom: 0; opacity: 0;}
+// }
