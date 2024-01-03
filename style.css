@@ -171,8 +171,25 @@
   filter: drop-shadow(0 0 8px);
   transition: all 300ms ease-in-out;
 }
-#popUp .content .img-container img:hover {
+#popUp .content .img-container:hover img {
+  filter: blur(0.1rem);
+}
+#popUp .content .img-container #popup-show-more {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  visibility: hidden;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+#popUp .content .img-container:hover #popup-show-more {
   transform: scale(1.1);
+  visibility: visible;
 }
 #popUp .content .text-container {
   display: flex;
