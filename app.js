@@ -14,6 +14,7 @@ const geocodingApi = new GeocodingApi();
 const askHouse = document.getElementById("ask-house");
 const modalCloseButton = document.getElementById("modal-close-button");
 const snackBar = document.getElementById("modal-snackbar");
+const snackBarTxt = document.getElementById("txt-snackbar");
 
 // MAP 🗺️
 const henrivilleLocation = [49.884195, 2.299391];
@@ -126,10 +127,22 @@ function toggleModal() {
   askHouse.style.display = "none";
 }
 
-function toggleSnackbar() {
+function sucessToggleSnackbar() {
+  snackBarTxt.innerHTML = "Votre demande à été transmise avec succès !";
+  snackBar.style.backgroundColor = "green";
   snackBar.classList.add("show");
-  setTimeout( ()=> {
-   snackBar.classList.remove("show");
+  setTimeout(() => {
+    snackBar.classList.remove("show");
+  }, 3000);
+}
+
+function errorToggleSnackbar() {
+  snackBarTxt.innerHTML =
+    "Une erreur à eu lieu, veuillez réessayer plus tard !";
+  snackBar.style.backgroundColor = "red";
+  snackBar.classList.add("show");
+  setTimeout(() => {
+    snackBar.classList.remove("show");
   }, 3000);
 }
 
@@ -187,15 +200,14 @@ requestForm.addEventListener("submit", function (event) {
       houseRequestApi.createHouseRequest(houseRequest);
 
       toggleModal();
-      toggleSnackbar();
+      sucessToggleSnackbar();
 
       //TODO: Add a snack bar //
       inputs.forEach((input) => (input.value = ""));
     })
     .catch((error) => {
       console.error(error);
-      window.alert(
-        `${completeAddress} n'est pas reconnue commme une vraie adresse :(`
-      );
+      errorToggleSnackbar();
+      toggleModal();
     });
 });
