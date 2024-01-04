@@ -34,6 +34,11 @@ mapLayer.addEventListener("click", () => {
   }
 });
 
+mapLayer.addEventListener("click", () => {
+  if (popUp.classList[0] === "show-popup") {
+    togglePopUp();
+  }
+});
 var map = L.map("map").setView(henrivilleLocation, 16);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -201,8 +206,6 @@ requestForm.addEventListener("submit", function (event) {
 
       toggleModal();
       sucessToggleSnackbar();
-
-      //TODO: Add a snack bar //
       inputs.forEach((input) => (input.value = ""));
     })
     .catch((error) => {
