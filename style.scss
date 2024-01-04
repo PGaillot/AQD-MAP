@@ -24,6 +24,31 @@ $titleColor: #b06141;
   right: 0;
 }
 
+//!-----------------NAVBAR--------------------// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //!------------------MODAL-------------------------//
 
 #ask-house {
@@ -172,7 +197,7 @@ $titleColor: #b06141;
 
   .content {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: nowrap;
 
     .img-container {
@@ -197,11 +222,12 @@ $titleColor: #b06141;
     
       #popup-show-more {
         position: absolute;
-        top: 30%;
+        top: 55%;
         left: 20%;
         visibility: hidden;
         font-family: "Dancing Script", cursive;
         font-weight: 700;
+        
         font-size: 2rem;
         text-align: center;
         user-select: none;
@@ -212,11 +238,14 @@ $titleColor: #b06141;
       &:hover #popup-show-more {
         transform: scale(1.1);
         visibility: visible;
+        filter: drop-shadow(0 0 22px white);
       }
     }
     .text-container {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 1rem;
       margin: 2rem;
 
@@ -245,6 +274,9 @@ $titleColor: #b06141;
   border-radius: 9999px;
   box-shadow: 0 0 10px rgb(194, 190, 190);
   display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 20rem;
 
   .fa {
     padding: 20px;
@@ -253,6 +285,7 @@ $titleColor: #b06141;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
+    flex-wrap: nowrap
   }
   .fa:visited {
     color: initial;
