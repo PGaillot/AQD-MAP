@@ -64,11 +64,35 @@ function togglePopUp() {
 }
 
 function loadPopUp(project) {
+  const imgContainer = document.getElementsByClassName("img-container")[0];
+
+  for (let i = imgContainer.children.length - 1; i >= 0; i--) {
+    const child = imgContainer.children[i];
+
+    if (child.className === "back-img") {
+      imgContainer.removeChild(child);
+    }
+  }
+
   document.getElementById("address").textContent = project.address;
   document.getElementById("description").textContent = project.description;
   document.getElementById("title").textContent = project.title;
   document.getElementById("city").textContent = project.city;
   document.getElementById("district").textContent = project.district;
+
+  project.imgId.forEach((id) => {
+    const img = document.createElement("img");
+    img.classList.add("back-img");
+    imageApi
+      .getProjectImageUrl(id)
+      .then((data) => {
+        console.log(data);
+        img.src = data;
+      })
+      .catch((error) => console.error(error))
+      .finally(() => console.log("It's over"));
+    imgContainer.appendChild(img);
+  });
 
   if (project.district === "" || project.district === undefined) {
     arrow.style.display = "none";
@@ -77,13 +101,6 @@ function loadPopUp(project) {
   }
 
   //! "APPEL D'API, de l'image "//
-  imageApi
-    .getProjectImageUrl(project.imgId)
-    .then((data) => {
-      document.getElementById("img").src = data;
-    })
-    .catch((error) => console.error(error))
-    .finally(() => console.log("It's over"));
 }
 
 function onMarkerClick(project) {
@@ -100,6 +117,7 @@ projectApi
   .getProjects()
   .then((projects) => {
     projects.forEach((project) => {
+      console.log(project);
       if (project.lat && project.long)
         L.marker([project.lat, project.long], { icon: greenIcon })
           .bindPopup(project.address)
@@ -202,11 +220,18 @@ requestForm.addEventListener("submit", function (event) {
         msg
       );
 
-      houseRequestApi.createHouseRequest(houseRequest);
-
-      toggleModal();
-      sucessToggleSnackbar();
-      inputs.forEach((input) => (input.value = ""));
+      houseRequestApi
+        .createHouseRequest(houseRequest)
+        .then((res) => {
+          toggleModal();
+          sucessToggleSnackbar();
+          inputs.forEach((input) => (input.value = ""));
+        })
+        .catch((error) => {
+          console.error(error);
+          errorToggleSnackbar();
+          toggleModal();
+        });
     })
     .catch((error) => {
       console.error(error);

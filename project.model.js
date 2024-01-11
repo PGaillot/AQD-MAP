@@ -2,7 +2,7 @@
 
 export default class Project{
 
-    constructor(lat, long, address, city, district = '', zipCode, display, description = '', title, imgId){
+    constructor(lat, long, address, city, district = '', zipCode, display, description = '', title, imgId = []){
         this.lat = lat,
         this.long = long,
         this.coordinate = [this.lat, this.long],
@@ -16,8 +16,4 @@ export default class Project{
         this.description = description
         this.getImgUrl;
     }
-
-
-
-
 }

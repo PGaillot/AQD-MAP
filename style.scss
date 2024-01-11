@@ -223,17 +223,19 @@ $titleColor: #b06141;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-top : 3rem ;
   }
 
   .content {
+    margin-top: 10rem ;
     display: flex;
     gap: 1.5rem;
     flex-wrap: nowrap;
 
     .img-container {
-      @include imgSize(260);
+      @include imgSize(260); 
       position: relative;
-      left: 1.5rem;
+      left: 1.5rem;  
       // overflow: hidden
 
       img {

@@ -204,8 +204,10 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin-top: 3rem;
 }
 #popUp .content {
+  margin-top: 10rem;
   display: flex;
   gap: 1.5rem;
   flex-wrap: nowrap;
